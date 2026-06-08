@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct iOSApp2App: App {
+    @State private var huntManager = HuntManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environment(huntManager)
         }
     }
-}
+   }

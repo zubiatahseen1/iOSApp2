@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9B8354E82FD678F800833D94 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8354E72FD678F800833D94 /* HomeView.swift */; };
+		9B8354EA2FD6790300833D94 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8354E92FD6790300833D94 /* ItemListView.swift */; };
+		9B8354EC2FD6791200833D94 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8354EB2FD6791200833D94 /* ItemCardView.swift */; };
+		9B8354EE2FD6792400833D94 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8354ED2FD6792400833D94 /* ItemDetailView.swift */; };
+		9B8354F02FD6793600833D94 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8354EF2FD6793600833D94 /* ResultsView.swift */; };
+		9B8354F32FD6797400833D94 /* HuntCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8354F22FD6797400833D94 /* HuntCardModifier.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9B8354B92FD6376000833D94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +36,12 @@
 		9B8354AB2FD6375F00833D94 /* iOSApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8354B82FD6376000833D94 /* iOSApp2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSApp2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8354C22FD6376000833D94 /* iOSApp2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSApp2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8354E72FD678F800833D94 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9B8354E92FD6790300833D94 /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		9B8354EB2FD6791200833D94 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
+		9B8354ED2FD6792400833D94 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		9B8354EF2FD6793600833D94 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		9B8354F22FD6797400833D94 /* HuntCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuntCardModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -43,6 +58,16 @@
 		9B8354C52FD6376000833D94 /* iOSApp2UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = iOSApp2UITests;
+			sourceTree = "<group>";
+		};
+		9B8354D82FD6784B00833D94 /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9B8354E42FD678A400833D94 /* Managers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +104,10 @@
 				9B8354BB2FD6376000833D94 /* iOSApp2Tests */,
 				9B8354C52FD6376000833D94 /* iOSApp2UITests */,
 				9B8354AC2FD6375F00833D94 /* Products */,
+				9B8354E42FD678A400833D94 /* Managers */,
+				9B8354D82FD6784B00833D94 /* Models */,
+				9B8354E62FD678BD00833D94 /* Views */,
+				9B8354F12FD6795600833D94 /* Modifiers */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +119,26 @@
 				9B8354C22FD6376000833D94 /* iOSApp2UITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9B8354E62FD678BD00833D94 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B8354E72FD678F800833D94 /* HomeView.swift */,
+				9B8354E92FD6790300833D94 /* ItemListView.swift */,
+				9B8354EB2FD6791200833D94 /* ItemCardView.swift */,
+				9B8354ED2FD6792400833D94 /* ItemDetailView.swift */,
+				9B8354EF2FD6793600833D94 /* ResultsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9B8354F12FD6795600833D94 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				9B8354F22FD6797400833D94 /* HuntCardModifier.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +158,8 @@
 			);
 			fileSystemSynchronizedGroups = (
 				9B8354AD2FD6375F00833D94 /* iOSApp2 */,
+				9B8354D82FD6784B00833D94 /* Models */,
+				9B8354E42FD678A400833D94 /* Managers */,
 			);
 			name = iOSApp2;
 			packageProductDependencies = (
@@ -236,6 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8354EC2FD6791200833D94 /* ItemCardView.swift in Sources */,
+				9B8354F02FD6793600833D94 /* ResultsView.swift in Sources */,
+				9B8354EE2FD6792400833D94 /* ItemDetailView.swift in Sources */,
+				9B8354F32FD6797400833D94 /* HuntCardModifier.swift in Sources */,
+				9B8354E82FD678F800833D94 /* HomeView.swift in Sources */,
+				9B8354EA2FD6790300833D94 /* ItemListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
