@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Displays the final results after the user submits their scavenger hunt.
+/// Shows a reward icon, the number of items found, the earned reward tier message,
+/// a photo summary grid of all items, and a "Play Again" button to reset the hunt.
 struct ResultsView: View {
     @Environment(HuntManager.self) var huntManager
     @Environment(\.dismiss) var dismiss
@@ -14,7 +17,7 @@ struct ResultsView: View {
     var body: some View {
         VStack(spacing: 32) {
 
-            // Trophy icon
+            // Reward icon — changes based on the tier earned
             Image(systemName: rewardIcon)
                 .font(.system(size: 80))
                 .foregroundStyle(rewardColor)
@@ -22,11 +25,12 @@ struct ResultsView: View {
             Text("Hunt Complete!")
                 .font(.largeTitle.bold())
 
+            // Found count summary
             Text("You found \(huntManager.foundCount) out of 10 items")
                 .font(.title3)
                 .foregroundStyle(.secondary)
 
-            // Reward message
+            // Reward tier message and discount code (if earned)
             VStack(spacing: 12) {
                 Text(huntManager.rewardTier.message)
                     .font(.body)
@@ -42,7 +46,7 @@ struct ResultsView: View {
                 }
             }
 
-            // Item photo summary grid
+            // Photo summary grid — shows captured photos or placeholder X marks
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
                     ForEach(huntManager.items) { item in
@@ -67,11 +71,13 @@ struct ResultsView: View {
                 .padding(.horizontal)
             }
 
+            // Reset button — clears all state and returns to the hunt list
             Button("Play Again") {
                 huntManager.resetHunt()
                 dismiss()
             }
             .buttonStyle(.bordered)
+            .controlSize(.large)
         }
         .padding()
         .onAppear {
@@ -79,7 +85,9 @@ struct ResultsView: View {
         }
     }
 
-    // Helpers for reward display
+    // MARK: - Reward Display Helpers
+
+    /// Maps the current reward tier to an appropriate SF Symbol icon name.
     private var rewardIcon: String {
         switch huntManager.rewardTier {
         case .grandPrize:    return "trophy.fill"
@@ -89,6 +97,7 @@ struct ResultsView: View {
         }
     }
 
+    /// Maps the current reward tier to a display color for the icon.
     private var rewardColor: Color {
         switch huntManager.rewardTier {
         case .grandPrize:    return .yellow

@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// A custom ViewModifier that styles scavenger hunt item cards.
+/// Found items get a green tinted background and border with a subtle scale-up animation;
+/// unfound items display a neutral gray card style.
 struct HuntCardModifier: ViewModifier {
     let isFound: Bool
 
@@ -25,6 +28,7 @@ struct HuntCardModifier: ViewModifier {
     }
 }
 
+/// Convenience extension so any view can apply the hunt card style with a simple modifier call.
 extension View {
     func huntCardStyle(isFound: Bool) -> some View {
         modifier(HuntCardModifier(isFound: isFound))

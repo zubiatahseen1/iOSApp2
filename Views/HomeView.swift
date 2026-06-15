@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// The landing screen for the Toronto Scavenger Hunt app.
+/// Displays a hero graphic, a brief description of the game, and a button
+/// to start or continue the hunt. Uses NavigationStack to push to ItemListView.
 struct HomeView: View {
     @Environment(HuntManager.self) var huntManager
 
@@ -14,11 +17,13 @@ struct HomeView: View {
         NavigationStack {
             VStack(spacing: 24) {
 
-                // App icon / hero image
-                Image("app-hero")
+                // Hero image using an SF Symbol as a visual centerpiece
+                Image(systemName: "map.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 200)
+                    .frame(height: 120)
+                    .foregroundStyle(.tint)
+                    .padding(.top, 40)
 
                 Text("Toronto Scavenger Hunt")
                     .font(.largeTitle.bold())
@@ -30,12 +35,15 @@ struct HomeView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
-                // Navigate to the item list
+                Spacer()
+
+                // Primary call-to-action: navigates to the item grid
                 NavigationLink(destination: ItemListView()) {
                     Text(huntManager.huntStarted ? "Continue Hunt" : "Start Hunt")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
+                .controlSize(.large)
                 .padding(.horizontal)
                 .simultaneousGesture(TapGesture().onEnded {
                     huntManager.huntStarted = true

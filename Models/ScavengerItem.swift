@@ -7,22 +7,36 @@
 
 import UIKit
 
+/// Represents a single item in the Toronto Scavenger Hunt.
+/// Each item is tied to a real Toronto business/landmark and includes a clue
+/// for the user to solve. Conforms to Identifiable for use in SwiftUI lists/grids.
 struct ScavengerItem: Identifiable {
     let id: Int
     let businessName: String
     let address: String
     let itemName: String
     let clue: String
+    /// Tracks whether the user has found and photographed this item.
     var isFound: Bool = false
+    /// The photo the user took as proof of finding the item.
     var photo: UIImage? = nil
 }
 
 // MARK: - Array Helpers
+
+/// Convenience computed properties on arrays of ScavengerItem,
+/// used by HuntManager to derive the found count and reward tier.
 extension Array where Element == ScavengerItem {
+    /// The number of items in the array that have been marked as found.
     var foundCount: Int {
         filter(\.isFound).count
     }
 
+    /// Determines the reward tier based on how many items were found.
+    /// - 10 items: grand prize entry
+    /// - 7–9 items: 20% discount
+    /// - 5–6 items: 10% discount
+    /// - Fewer than 5: no reward yet
     var rewardTier: RewardTier {
         switch foundCount {
         case 10:       return .grandPrize
@@ -34,6 +48,8 @@ extension Array where Element == ScavengerItem {
 }
 
 // MARK: - Sample Data
+
+/// Static sample data representing 10 Toronto locations for the scavenger hunt.
 extension ScavengerItem {
     static let allItems: [ScavengerItem] = [
         ScavengerItem(

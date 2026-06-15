@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Detail view for a single scavenger item, presented as a sheet from ItemListView.
+/// Shows the item's clue, location info, and a photo preview. The user can take
+/// a photo using the ImagePicker (camera on device, photo library on simulator)
+/// to mark the item as found.
 struct ItemDetailView: View {
     let item: ScavengerItem
     @Environment(HuntManager.self) var huntManager
@@ -19,8 +23,8 @@ struct ItemDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
 
-                    // Photo preview or placeholder
-                    if let photo = capturedPhoto {
+                    // Photo preview: shows the captured image or a camera placeholder
+                    if let photo = capturedPhoto ?? item.photo {
                         Image(uiImage: photo)
                             .resizable()
                             .scaledToFit()
@@ -36,7 +40,7 @@ struct ItemDetailView: View {
                             )
                     }
 
-                    // Clue
+                    // Clue section — the riddle the user solves to find the item
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Your Clue")
                             .font(.headline)
@@ -45,7 +49,7 @@ struct ItemDetailView: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    // Business info
+                    // Location details — reveals which business to visit
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Location")
                             .font(.headline)
@@ -56,7 +60,7 @@ struct ItemDetailView: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    // Camera button
+                    // Camera button to capture proof of finding the item
                     Button {
                         showCamera = true
                     } label: {
@@ -67,7 +71,7 @@ struct ItemDetailView: View {
                         .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(false)
+                    .controlSize(.large)
                 }
                 .padding()
             }
@@ -78,12 +82,13 @@ struct ItemDetailView: View {
                     Button("Done") { dismiss() }
                 }
             }
-            // TODO: Replace with real camera sheet using UIImagePickerController
+            // Present the ImagePicker (camera or photo library) as a sheet
             .sheet(isPresented: $showCamera) {
-                Text("Camera goes here")  // placeholder
+                ImagePicker(image: $capturedPhoto)
             }
-            .onChange(of: capturedPhoto) { photo in
-                if let photo = photo {
+            // When a photo is captured, mark the item as found in HuntManager
+            .onChange(of: capturedPhoto) { oldValue, newValue in
+                if let photo = newValue {
                     huntManager.markFound(id: item.id, photo: photo)
                 }
             }

@@ -7,12 +7,15 @@
 
 import Foundation
 
+/// Defines the reward tiers earned based on how many scavenger items the user finds.
+/// Each tier provides a user-facing message and an optional discount code.
 enum RewardTier {
     case none
     case tenPercent
     case twentyPercent
     case grandPrize
 
+    /// A human-readable message describing what the user earned at this tier.
     var message: String {
         switch self {
         case .none:
@@ -26,6 +29,7 @@ enum RewardTier {
         }
     }
 
+    /// The discount code string for this tier, or nil if no discount was earned.
     var discountCode: String? {
         switch self {
         case .none:       return nil
@@ -34,5 +38,3 @@ enum RewardTier {
         }
     }
 }
-
-
